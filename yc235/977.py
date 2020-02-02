@@ -32,8 +32,10 @@ for _ in range(N - 1):
     edges[v] += 1
 
 t = sum(1 for e in parent if e < 0)
+if 1 in edges:
+    t += 1
 
-if t >= 3 or (t == 2 and 1 in edges):
+if t >= 3:
     print('Alice')
 else:
     print('Bob')
