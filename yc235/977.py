@@ -31,11 +31,18 @@ for _ in range(N - 1):
     edges[u] += 1
     edges[v] += 1
 
-t = sum(1 for e in parent if e < 0)
-if 1 in edges:
-    t += 1
+# Alice が橋を爆破する前のグループ数
+groups = sum(1 for e in parent if e < 0)
 
-if t >= 3:
-    print('Alice')
-else:
+# Alice が橋を1つ爆破した後のグループ数
+if 1 in edges:
+    groups += 1
+
+# Bob が橋を1つ掛けた後のグループ数
+if groups != 1:
+    groups -= 1
+
+if groups == 1:
     print('Bob')
+else:
+    print('Alice')
