@@ -8,8 +8,8 @@ def is_ok(N):
 P, Q = map(int, input().split())
 
 ok = 1
-ng = 10 ** 18
-while ng - ok > 0.000001:
+ng = 1e12
+for _ in range(100):
     m = (ok + ng) / 2
     if is_ok(m):
         ok = m
