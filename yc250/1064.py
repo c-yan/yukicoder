@@ -15,26 +15,26 @@ if t > 0:
     print('No')
     exit()
 
-ok = (c - a) / 4
-ng = 1e12
+ok = 1e12
+ng = (c - a) / 4
 for _ in range(100):
     m = (ok + ng) / 2
-    if f(m) < 0:
+    if f(m) > 0:
         ok = m
     else:
         ng = m
-x1 = ng
+x1 = ok
 y1 = x1 * x1 + a * x1 + b
 
-ok = (c - a) / 4
-ng = -1e12
+ok = -1e12
+ng = (c - a) / 4
 for _ in range(100):
     m = (ok + ng) / 2
-    if f(m) < 0:
+    if f(m) > 0:
         ok = m
     else:
         ng = m
-x2 = ng
+x2 = ok
 y2 = x2 * x2 + a * x2 + b
 
 p = (y2 - y1) / (x2 - x1)
