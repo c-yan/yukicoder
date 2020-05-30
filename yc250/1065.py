@@ -1,3 +1,4 @@
+# PyPy でのみ AC
 from math import sqrt
 from sys import stdin
 from collections import deque
