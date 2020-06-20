@@ -1,4 +1,4 @@
-# PyPy なら AC
+# PyPy でのみ AC
 N, d, K = map(int, input().split())
 
 buf0 = [0] * (d * N + K + 1)
