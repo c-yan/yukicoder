@@ -4,6 +4,8 @@ V = list(map(int, input().split()))
 R = list(map(int, input().split()))
 A, B = map(int, input().split())
 
+m = 1000000007
+
 vt = {}
 vt[0] = 1
 for v in V:
@@ -39,5 +41,5 @@ for k in vt:
         result += ra[rhigh] * vt[k]
     else:
         result += (ra[rhigh] - ra[rlow]) * vt[k]
-    result %= 1000000007
+    result %= m
 print(result)

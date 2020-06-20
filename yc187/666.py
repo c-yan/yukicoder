@@ -1,3 +1,5 @@
 A, B = map(int, input().split())
 
-print(A * B % 1000000007)
+m = 1000000007
+
+print(A * B % m)

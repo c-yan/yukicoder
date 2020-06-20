@@ -4,10 +4,12 @@ setrecursionlimit(10 ** 6)
 
 N, M = map(int, input().split())
 
+m = 1000000007
+
 fac = [0] * (M + 1)
 fac[0] = 1
 for i in range(M):
-    fac[i + 1] = fac[i] * (i + 1) % 1000000007
+    fac[i + 1] = fac[i] * (i + 1) % m
 
 
 def mcomb(n, k):
@@ -15,13 +17,13 @@ def mcomb(n, k):
         return 1
     if n < k or k < 0:
         return 0
-    return fac[n] * pow(fac[n - k], 1000000005, 1000000007) * pow(fac[k], 1000000005, 1000000007) % 1000000007
+    return fac[n] * pow(fac[n - k], m - 2, m) * pow(fac[k], m - 2, m) % m
 
 
 def f(i):
     if i == 0:
         return 0
-    return (mcomb(M, i) * pow(i, N, 1000000007) - f(i - 1)) % 1000000007
+    return (mcomb(M, i) * pow(i, N, m) - f(i - 1)) % m
 
 
 print(f(M))
