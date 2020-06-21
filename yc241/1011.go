@@ -7,6 +7,10 @@ import (
 	"strconv"
 )
 
+const (
+	m = 1000000007
+)
+
 func main() {
 	N := readInt()
 	d := readInt()
@@ -19,16 +23,16 @@ func main() {
 		t := 0
 		for j := 0; j < d; j++ {
 			t += buf0[j]
-			t %= 1000000007
+			t %= m
 			buf1[j] = t
 		}
 		for j := d; j < (i+1)*d; j++ {
 			t -= buf0[j-d]
 			if t < 0 {
-				t += 1000000007
+				t += m
 			}
 			t += buf0[j]
-			t %= 1000000007
+			t %= m
 			buf1[j] = t
 		}
 		buf0, buf1 = buf1, buf0
