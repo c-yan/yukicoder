@@ -221,14 +221,14 @@ func main() {
 		a := lt.Min()
 		b := rt.Min()
 		if a <= A[i] && b <= A[i] {
-			//printf("凸 %d %d %d\n", a, A[i], b)
+			// printf("凸 %d %d %d\n", a, A[i], b)
 			result = min(result, a+A[i]+b)
 		}
 
 		c := lt.GEMin(A[i])
 		d := rt.GEMin(A[i])
 		if c != math.MaxInt64 && d != math.MaxInt64 && c >= A[i] && d >= A[i] {
-			//printf("凹 %d %d %d\n", c, A[i], d)
+			// printf("凹 %d %d %d\n", c, A[i], d)
 			result = min(result, c+A[i]+d)
 		}
 
