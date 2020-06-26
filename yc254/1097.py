@@ -19,7 +19,7 @@ while True:
 b.append(r)
 c.append(X)
 loop_start = b.index(b[-1])
-loop_len = len(b) - loop_start
+loop_len = len(b) - loop_start - 1
 
 Q = int(readline())
 for _ in range(Q):
@@ -31,4 +31,4 @@ for _ in range(Q):
         a = K // loop_len
         K %= loop_len
         K += loop_start
-        print(b[K] + K * (c[-1] - c[loop_start]))
+        print(c[K] + a * (c[-1] - c[loop_start]))
