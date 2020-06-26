@@ -41,11 +41,8 @@ a = list(accumulate(A))
 st = SegmentTree(N)
 st.update_all(a)
 
-#print(a)
 result = 0
 result += st.query(0, N)
-#print(result)
 for i in range(1, N):
     result += st.query(i, N) - a[i - 1] * (N - i)
-    #print(result)
 print(result)
