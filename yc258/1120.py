@@ -12,22 +12,11 @@ elif N > 2:
         print(-1)
     elif (sum(A) - sum(B)) % (N - 2) == 0:
         t = (sum(A) - sum(B)) // (N - 2)
-        s = 0
         for i in range(N):
-            if A[i] - B[i] > t:
+            if abs(A[i] - B[i]) > t or (B[i] - (A[i] - t)) % 2 == 1:
                 print(-1)
                 break
-            if B[i] - A[i] > t:
-                print(-1)
-                break
-            if (B[i] - (A[i] - t)) % 2 == 1:
-                print(-1)
-                break
-            s += t - (A[i] - B[i])
         else:
-            if s != 2 * t:
-                print(-1)
-            else:
-                print(t)
+            print(t)
     else:
         print(-1)
