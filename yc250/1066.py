@@ -14,5 +14,4 @@ for i in range(1, N):
         dp[j + 1] %= m
         dp[j] *= A[i] - 1
         dp[j] %= m
-
-print('\n'.join(str(dp[b]) for b in B))
+print(*(dp[b] for b in B), sep='\n')

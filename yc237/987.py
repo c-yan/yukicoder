@@ -11,4 +11,4 @@ elif op == '*':
     op = mul
 
 for a in A:
-    print(' '.join(str(op(a, b)) for b in B))
+    print(*(op(a, b) for b in B))

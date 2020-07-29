@@ -41,4 +41,4 @@ for _ in range(Q):
     elif T == 3:
         j, a = find(parent, amount, A)
         result.append(amount[j] + a)
-print('\n'.join(str(v) for v in result))
+print(*result, sep='\n')
