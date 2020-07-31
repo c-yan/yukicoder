@@ -13,7 +13,7 @@ colsm = [0] * W
 for i in range(H):
     for j in range(W):
         x = A[i][j]
-        if x == m or x == 0:
+        if x == 0:
             totalm += 1
             rowsm[i] += 1
             colsm[j] += 1
@@ -30,12 +30,12 @@ for _ in range(Q):
     r, c = map(lambda x: int(x) - 1, input().split())
     x = A[r][c]
     t = 0
-    if x == m or x == 0:
+    if x == 0:
         t = 1
     if totalm - rowsm[r] - colsm[c] + t > 0:
         result.append(0)
     else:
-        if x == m or x == 0:
+        if x == 0:
             result.append(total * pow(rows[r], -1, m) % m * pow(cols[c], -1, m) % m)
         else:
             result.append(total * pow(rows[r], -1, m) % m * pow(cols[c], -1, m) % m * A[r][c] % m)
