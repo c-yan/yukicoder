@@ -38,5 +38,5 @@ for _ in range(Q):
         if x == 0:
             result.append(total * pow(rows[r], -1, m) % m * pow(cols[c], -1, m) % m)
         else:
-            result.append(total * pow(rows[r], -1, m) % m * pow(cols[c], -1, m) % m * A[r][c] % m)
+            result.append(total * pow(rows[r], -1, m) % m * pow(cols[c], -1, m) % m * x % m)
 print(*result, sep='\n')
