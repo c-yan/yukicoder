@@ -3,10 +3,10 @@ readline = stdin.readline
 
 N, M = map(int, readline().split())
 
-a, b = 0, 0
+odd, even = 0, 0
 for _ in range(N):
-    t = sum(map(int, readline().split()))
-    c, d = a, b
-    a = max(c, d + t)
-    b = max(d, c - t)
-print(max(a, b))
+    s = sum(map(int, readline().split()))
+    t = odd
+    odd = max(odd, even + s)
+    even = max(even, t - s)
+print(odd)
