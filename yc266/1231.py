@@ -1,11 +1,16 @@
 N, *A = map(int, open(0).read().split())
 
-dp = [[-1] * 10 for _ in range(N + 1)]
-dp[0][0] = 0
-for i in range(N):
-    for j in range(10):
-        if dp[i][j] == -1:
+dp = [-1] * 10
+dp[0] = 0
+for a in A:
+    t = [-1] * 10
+    for i in range(10):
+        if dp[i] == -1:
             continue
-        dp[i + 1][(j + A[i]) % 10] = max(dp[i + 1][(j + A[i]) % 10], dp[i][j] + 1)
-        dp[i + 1][j] = max(dp[i + 1][j], dp[i][j])
-print(dp[N][0])
+        if t[i] < dp[i]:
+            t[i] = dp[i]
+        n = (i + a) % 10
+        if t[n] < dp[i] + 1:
+            t[n] = dp[i] + 1
+    dp = t
+print(dp[0])
