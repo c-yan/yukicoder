@@ -49,30 +49,20 @@ class SegmentTree:
         return result
 
 
-def f(a, b):
-    if a[1] < b[1]:
-        return a
-    else:
-        return b
-
-
 readline = stdin.readline
 
 N, Q = map(int, readline().split())
-a = list(map(int, input().split()))
+a = list(map(int, readline().split()))
 
-st = SegmentTree(N, f, (N + 1, N + 1))
-st.build((i + 1, a[i]) for i in range(N))
+st = SegmentTree(N, min, (10 ** 18, -1))
+st.build((a[i], i + 1) for i in range(N))
 
 result = []
 for _ in range(Q):
     t, l, r = map(int, readline().split())
     l, r = l - 1, r - 1
     if t == 1:
-        lv = st[l][1]
-        rv = st[r][1]
-        st[l] = (l + 1, rv)
-        st[r] = (r + 1, lv)
+        st[l], st[r] = (st[r][0], l + 1), (st[l][0], r + 1)
     elif t == 2:
-        result.append(st.query(l, r + 1)[0])
+        result.append(st.query(l, r + 1)[1])
 print(*result, sep='\n')
