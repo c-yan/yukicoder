@@ -1,4 +1,4 @@
-from sys import stdin, setrecursionlimit
+from sys import stdin
 
 
 class SegmentTree:
@@ -22,22 +22,25 @@ class SegmentTree:
         for i in range(self._offset - 1, -1, -1):
             values[i] = SegmentTree.op(values[i * 2 + 1], values[i * 2 + 2])
 
-    def _iter_segmen_indexes(self, start, stop):
+    def _get_segmen_indexes(self, start, stop):
+        ls = []
+        rs = []
         l = start + self._offset
         r = stop + self._offset
         while l < r:
             if l & 1 == 0:
-                yield l
+                ls.append(l)
             if r & 1 == 0:
-                yield r - 1
+                rs.append(r - 1)
             l = l // 2
             r = (r - 1) // 2
+        return ls + rs[::-1]
 
     def _propagate(self, start, stop):
         lazy = self._lazy
         values = self._values
         indexes = []
-        for i in self._iter_segmen_indexes(start, stop):
+        for i in self._get_segmen_indexes(start, stop):
             if i == 0:
                 return
             while i != 0:
@@ -58,7 +61,7 @@ class SegmentTree:
         values = self._values
         lazy = self._lazy
         self._propagate(start, stop)
-        for i in self._iter_segmen_indexes(start, stop):
+        for i in self._get_segmen_indexes(start, stop):
             lazy[i] += value
             values[i] += value
             while i >= 1:
@@ -70,13 +73,12 @@ class SegmentTree:
         values = self._values
         self._propagate(start, stop)
         result = SegmentTree.DEFAULT_VALUE
-        for i in self._iter_segmen_indexes(start, stop):
+        for i in self._get_segmen_indexes(start, stop):
             result = op(result, values[i])
         return result
 
 
 readline = stdin.readline
-setrecursionlimit(10 ** 6)
 
 N = int(readline())
 a = list(map(int, readline().split()))
