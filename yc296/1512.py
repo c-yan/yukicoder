@@ -2,26 +2,21 @@ from sys import stdin
 
 readline = stdin.readline
 
-az = 'abcdefghijklmnopqrstuvwxyz'
-
 N = int(readline())
 S = [readline()[:-1] for _ in range(N)]
 
-S.sort()
-
-dp = {chr(ord('a') - 1): 0}
-
-for l in S:
-    if ''.join(sorted(l)) != l:
+dp = {'a': 0}
+for s in sorted(S):
+    if ''.join(sorted(s)) != s:
         continue
-    start = l[0]
-    last = l[-1]
+    start = s[0]
+    last = s[-1]
+    l = len(s)
     dp.setdefault(last, 0)
-    for c in reversed(az):
+    for c in 'zyxwvutsrqponmlkjihgfedcba':
         if c not in dp:
             continue
         if start < c:
             continue
-        dp[last] = max(dp[last], dp[c] + len(l))
-    dp[last] = max(dp[last], len(l))
+        dp[last] = max(dp[last], dp[c] + l)
 print(max(dp.values()))
