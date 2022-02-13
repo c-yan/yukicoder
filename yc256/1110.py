@@ -5,4 +5,4 @@ N, D, *A = map(int, open(0).read().split())
 t = sorted(A)
 
 for a in A:
-    print(bisect_left(t, a - D))
+    print(bisect_left(t, a - D + 1))
